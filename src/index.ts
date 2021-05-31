@@ -1,6 +1,6 @@
 import { Actor, getDefaultAgent, Principal, toHex } from "@dfinity/agent";
 import { pollForResponse, strategy } from "@dfinity/agent/lib/cjs/polling";
-import protobuf from "protobufjs";
+import protobuf from "protobufjs/light";
 
 export default function extendProtobuf(actor: Actor, pb: protobuf.Service) {
   pb.methodsArray.forEach(

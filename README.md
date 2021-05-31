@@ -44,3 +44,9 @@ await actor.write(5);
 ```
 
 A complete example can be found [here](./example/index.js).
+
+## Building
+
+```js
+npm run build
+```
