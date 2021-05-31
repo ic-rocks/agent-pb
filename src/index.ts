@@ -1,5 +1,10 @@
-import { Actor, getDefaultAgent, Principal, toHex } from "@dfinity/agent";
-import { pollForResponse, strategy } from "@dfinity/agent/lib/cjs/polling";
+import {
+  Actor,
+  getDefaultAgent,
+  polling,
+  Principal,
+  toHex,
+} from "@dfinity/agent";
 import protobuf from "protobufjs/light";
 
 export default function extendProtobuf(actor: Actor, pb: protobuf.Service) {
@@ -10,7 +15,7 @@ export default function extendProtobuf(actor: Actor, pb: protobuf.Service) {
 
 const metadataSymbol = Symbol.for("ic-agent-metadata");
 const DEFAULT_ACTOR_CONFIG = {
-  pollingStrategyFactory: strategy.defaultStrategy,
+  pollingStrategyFactory: polling.strategy.defaultStrategy,
 };
 const verifyEncode = (type: protobuf.Type | null, arg: any) => {
   if (type) {
@@ -126,7 +131,7 @@ function _createActorMethod(actor, method: protobuf.Method) {
         );
       }
       const pollStrategy = pollingStrategyFactory();
-      const responseBytes = await pollForResponse(
+      const responseBytes = await polling.pollForResponse(
         agent,
         ecid,
         requestId,
