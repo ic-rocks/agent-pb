@@ -10,17 +10,17 @@ Service methods should include an `annotation` field set to `query` or `update`.
 syntax = "proto3";
 
 import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
 
 service MyCanister {
-  rpc read (google.protobuf.Empty) returns (uint64) {
+  rpc read (google.protobuf.Empty) returns (google.protobuf.UInt64Value) {
     option annotation = query;
   };
 
-  rpc write (uint64) returns (google.protobuf.Empty) {
+  rpc write (google.protobuf.UInt64Value) returns (google.protobuf.Empty) {
     option annotation = update;
   };
 }
-
 ```
 
 ## Usage
