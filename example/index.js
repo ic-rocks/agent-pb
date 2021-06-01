@@ -32,12 +32,12 @@ const showRegistry = async () => {
 
   const { deltas } = await registry.get_changes_since({});
   console.log(deltas[0]);
-  // console.log(await registry.get_certified_changes_since({ version: 1 }));
-  // console.log(
-  //   await registry.get_value({
-  //     key: "subnet_list",
-  //   })
-  // );
+  console.log(await registry.get_certified_changes_since({ version: 2000 }));
+  console.log(
+    await registry.get_value({
+      key: Buffer.from("subnet_list"),
+    })
+  );
   console.log(await registry.get_latest_version({}));
   console.log(await registry.get_certified_latest_version({}));
 };

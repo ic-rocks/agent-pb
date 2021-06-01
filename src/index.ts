@@ -1,5 +1,6 @@
 import {
   Actor,
+  blobFromUint8Array,
   getDefaultAgent,
   polling,
   Principal,
@@ -23,7 +24,7 @@ const verifyEncode = (type: protobuf.Type | null, arg: any) => {
     if (err) {
       throw new Error(err);
     }
-    return type.encode(arg).finish();
+    return blobFromUint8Array(type.encode(arg).finish());
   } else {
     return Buffer.from([]);
   }
