@@ -70,8 +70,7 @@ function _createActorMethod(actor, method: protobuf.Method) {
         case "replied" /* Replied */:
           return method.root
             .lookupType(method.responseType)
-            .decode(result.reply.arg)
-            .toJSON();
+            .decode(result.reply.arg);
       }
     };
   } else {
@@ -140,7 +139,7 @@ function _createActorMethod(actor, method: protobuf.Method) {
       );
       const retType = method.root.lookupType(method.responseType);
       if (responseBytes !== undefined) {
-        return retType.decode(responseBytes).toJSON();
+        return retType.decode(responseBytes);
       } else if (!retType) {
         return undefined;
       } else {
