@@ -14,7 +14,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@dfinity/agent": "^0.8.9",
+    "@dfinity/agent": "^0.9.0",
     "protobufjs": "^6.11.2"
   },
   "devDependencies": {

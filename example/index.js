@@ -1,4 +1,5 @@
-const { Actor, HttpAgent, IDL } = require("@dfinity/agent");
+const { Actor, HttpAgent } = require("@dfinity/agent");
+const { IDL } = require("@dfinity/candid");
 const crypto = require("isomorphic-webcrypto");
 const fetch = require("node-fetch");
 const protobuf = require("protobufjs");

@@ -1,11 +1,5 @@
-import {
-  Actor,
-  blobFromUint8Array,
-  getDefaultAgent,
-  polling,
-  Principal,
-  toHex,
-} from "@dfinity/agent";
+import { Actor, getDefaultAgent, polling, toHex } from "@dfinity/agent";
+import { Principal } from "@dfinity/principal";
 import protobuf from "protobufjs/light";
 
 export default function extendProtobuf(actor: Actor, pb: protobuf.Service) {
@@ -24,7 +18,7 @@ const verifyEncode = (type: protobuf.Type | null, arg: any) => {
     if (err) {
       throw new Error(err);
     }
-    return blobFromUint8Array(type.encode(arg).finish());
+    return Uint8Array.from(type.encode(arg).finish());
   } else {
     return Buffer.from([]);
   }
